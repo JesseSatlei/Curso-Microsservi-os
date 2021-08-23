@@ -2,8 +2,7 @@ import * as mongoose from 'mongoose';
 
 export const PlayerSchema = new mongoose.Schema({
     phoneNumber: {
-        type: String,
-        unique: true
+        type: String
     },
     email: {
         type: String,
