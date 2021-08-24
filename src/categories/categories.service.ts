@@ -41,6 +41,21 @@ export class CategoriesService {
         return categoryFind;
     }
 
+    async consultCategoryForPlayer(idPlayer: any): Promise<Category> {                             
+
+       const players = await this.playersService.getPlayers()
+
+       const playerFind = players.filter( player => player._id == idPlayer )
+
+       if (playerFind.length == 0) {
+           throw new BadRequestException(`The id ${idPlayer} is not a player!`)
+       }
+
+        return await this.categoryModel.findOne().where('players').in(idPlayer).exec() 
+
+    }
+
+
     async updateCategory(category: string, updateCategoryDto: UpdateCategoryDto): Promise<void> {
         const categoryFind = await this.categoryModel.findOne({category}).exec();
 
