@@ -9,6 +9,7 @@ import { PlayersModule } from 'src/players/players.module';
   imports: [MongooseModule.forFeature([{ name: 'Category', schema: CategorySchema }]), 
     PlayersModule],
   providers: [CategoriesService],
-  controllers: [CategoriesController]
+  controllers: [CategoriesController],
+  exports: [CategoriesService]
 })
 export class CategoriesModule {}
